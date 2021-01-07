@@ -1,0 +1,45 @@
+input, select {
+  &.text {
+    width: 100%;
+    margin: 8px 0px;
+    padding: 16px 24px; 
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #9E9E9E;
+    font-size: 34px;
+    font-family: Poppins;
+    margin: 28px 0;
+  }
+}
+  
+label {
+  font-size: 26px;
+  font-weight: 500;
+  color: $text-base-color;
+  line-height: 16.5px;
+  margin: 18px 0;
+}
+
+textarea, trix-editor {
+  width: 100%;
+  margin: 8px 0px;
+  padding: 8px 8px;
+  min-height: 440px;
+  resize: vertical;
+  &.sm {
+    min-height: 160px;
+  }
+}
+
+.devise-links {
+  a {
+    text-decoration: none;
+    float: right;
+    color: rgba(204, 204, 204, 1);
+    font-size: 16px;
+  }
+}
+
+.session-image {
+  margin-bottom: 70px;
+}
