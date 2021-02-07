@@ -1,0 +1,18 @@
+.container.profilePage
+    .profilePage_user
+        .profilePage_user_name
+            = current_user.display_name
+        .profilePage_user_image
+            = image_tag 'default-avatar.jpeg'
+        .profilePage_user_basicInfo
+            = link_to '#', class: 'profilePage_user_basicInfo_posts' do
+                %h3 44
+                %p Posts
+            = link_to '#', class: 'profilePage_user_basicInfo_followers' do
+                %h3 110
+                %p Followers
+            = link_to '#', class: 'profilePage_user_basicInfo_following' do
+                %h3 44
+                %p Following
+        .profilePage_user_articles
+            = image_tag 'default-article-image1.jpeg'

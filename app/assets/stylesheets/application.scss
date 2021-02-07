@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'form';
 @import 'buttons';
+@import 'profile';
 html {
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
@@ -26,4 +27,17 @@ font-size: 1em;
 .container {
 padding: 16px 16px;
 width: 100%;
+}
+
+
+h1,h2,h3 {
+    color: $font-color;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
 }

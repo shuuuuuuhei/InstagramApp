@@ -25,5 +25,8 @@ class User < ApplicationRecord
   validates :account, uniqueness: true
 
   has_one :profile, dependent: :destroy
-
+  
+  def display_name
+    self.email.split('@').first
+  end
 end
