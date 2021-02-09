@@ -8,8 +8,11 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if flash.present?
-      .flash
-        - flash.each do |key, value|
-          %div{:class => key}= value
-    = yield
+  .container
+    = link_to root_path do
+      %h1 InstaApp
+      - if flash.present?
+        .flash
+          - flash.each do |key, value|
+            %div{:class => key}= value
+      = yield

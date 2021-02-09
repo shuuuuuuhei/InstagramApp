@@ -1,1 +1,8 @@
-%p articles
+
+%p Home
+
+= link_to 'プロフィール', profile_path
+= link_to '投稿する', new_article_path
+- @articles.each do |article|
+    = article.id
+    = article.caption
