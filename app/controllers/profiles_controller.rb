@@ -6,7 +6,21 @@ class ProfilesController < ApplicationController
     end
 
     def edit
-        
+        @profile = current_user.build_profile
+    end
+
+    def update
+        @profile = current_user.build_profile
+        @profile.assign_attributes(profile_params)
+        @profile.save!
+        render 
+    end
+
+    def create
+        @profile = current_user.build_profile
+        @profile.assign_attributes(profile_params)
+        @profile.save!
+        render json: @profile
     end
 
     private

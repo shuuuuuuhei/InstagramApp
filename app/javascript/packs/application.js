@@ -8,10 +8,31 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+require("trix")
+require("@rails/actiontext")
+
+import $ from 'jquery'
+import axios from 'axios'
+
+document.addEventListener('DOMContentLoaded', () => {
+    $('.profilePage_user_image').on('click', () => {
+        $('.profilePage_user_image_area').removeClass('hidden')
+    })
+    $('.add-user-image-btn').on('click', () => {
+        const userImage = $('#user_image_tag').val()
+
+        axios.post(`/profile`, {
+            profile: {avatar: userImage}
+        })
+        .then((res) => {
+            console.log(res)
+        })
+    })
+})

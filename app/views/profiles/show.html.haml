@@ -3,7 +3,11 @@
         .profilePage_user_name
             = current_user.display_name
         .profilePage_user_image
-            = image_tag 'default-avatar.jpeg'
+            = image_tag current_user.avatar_image
+        .profilePage_user_image_area.hidden
+            %input(type="file" name = 'image' id='user_image_tag')
+            .btn-secondary.add-user-image-btn
+                アバターを更新
         .profilePage_user_basicInfo
             = link_to '#', class: 'profilePage_user_basicInfo_posts' do
                 %h3 44
