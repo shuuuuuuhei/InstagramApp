@@ -23,7 +23,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :account, uniqueness: true
-
+  
+  has_many :articles, dependent: :destroy
   has_one :profile, dependent: :destroy
   
   def display_name
