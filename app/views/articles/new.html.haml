@@ -2,12 +2,13 @@
     - @article.errors.full_messages.each do |message|
         %li= message
 = form_with(model: @article, local: true) do |f|
+    .user_info
+        = image_tag @article.user.avatar_image, class: 'icon'
+        %h3.card_user_detail_name.user_info_name= @article.user.display_name
+        = f.submit 'POST' , class: 'post-btn'
     %div
-        = f.label 'キャプション'
+        = f.text_area :caption, placeholder: "What's on your mind?"
     %div
-        = f.text_area :caption
-    %div
-        = f.label :eyecatch, 'アイキャッチ'
-    %div
-        = f.file_field :eyecatch
-    = f.submit '保存' , class: 'btn-primary'
+        = f.label :images, class: "form-image" do
+            %p= '+ Album'
+        = f.file_field :images, direct_upload: true, multiple: true

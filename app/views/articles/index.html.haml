@@ -10,10 +10,10 @@
                 .card_user_detail
                     %h3.card_user_detail_name= article.user.display_name
                     %p.card_user_detail_time 12 hours ago
-        - if article.eyecatch.attached?
-            = link_to article_path(article) do
+        - if article.images.attached?
+            - article.images.each do |image|
                 .card_image
-                    = image_tag article.eyecatch
+                    = image_tag image
         .card_detail
             .card_heart
                 = image_tag 'heart.png'
@@ -21,6 +21,9 @@
                 = image_tag 'comment.png'
             .card_add_detail
                 = image_tag 'detail.png'
-        = link_to article_path(article) do
-            .card_content
-                = article.caption
+        .card_good
+            %p.card_good_person いいね！：yoshinobu_ohga
+        .card_content
+            = link_to profile_path do
+                %h3.card_user_detail_name= article.user.display_name
+            %p.card_content_caption= article.caption

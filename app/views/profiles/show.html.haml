@@ -19,4 +19,9 @@
                 %h3 44
                 %p Following
         .profilePage_user_articles
-            = image_tag 'default-article-image1.jpeg'
+            - current_user.articles.each do |article|
+                .card
+                    - if article.images.attached?
+                        .card_image
+                            - article.images.each do |image|
+                                = image_tag image
