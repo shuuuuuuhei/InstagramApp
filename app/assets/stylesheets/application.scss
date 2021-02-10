@@ -1,7 +1,13 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import 'variables';
 @import 'form';
 @import 'buttons';
 @import 'profile';
+@import 'actiontext';
+@import 'trix/dist/trix.css';
+@import 'article';
+@import 'card';
 html {
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
@@ -45,3 +51,4 @@ img {
 .hidden {
     display: none;
 }
+

@@ -25,8 +25,22 @@ textarea, trix-editor {
   width: 100%;
   margin: 8px 0px;
   padding: 8px 8px;
+  min-height: 150px;
+  font-size: 50px;
+  resize: vertical;
+  border: none;
+  border-bottom: 1px solid #9E9E9E;
+  &.sm {
+    min-height: 160px;
+  }
+}
+.user-text-form {
+  width: 100%;
+  margin: 8px 0px;
+  padding: 8px 8px;
   min-height: 440px;
   resize: vertical;
+  border: none;
   &.sm {
     min-height: 160px;
   }

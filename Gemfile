@@ -28,6 +28,7 @@ gem 'binding_of_caller'
 gem 'faker'
 gem 'hamlit'
 gem 'devise'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -62,3 +63,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'font-awesome-sass', '~> 5.15.1'
