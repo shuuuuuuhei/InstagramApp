@@ -8,7 +8,7 @@
         = f.submit 'POST' , class: 'post-btn'
     %div
         = f.text_area :caption, placeholder: "What's on your mind?"
-    %div
-        = f.label :images, class: "form-image" do
-            %p= '+ Album'
-        = f.file_field :images, direct_upload: true, multiple: true
+    %div.item-num-0#image-box__container
+        = f.file_field :images, direct_upload: true, multiple: true, id: 'img-file', style: "display:none"
+        %label{for: "img-file"}
+            %p.label-post-album + Album

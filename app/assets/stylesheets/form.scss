@@ -56,22 +56,21 @@ textarea, trix-editor {
 
 .form-image{
   margin: 20px;
-  p {
-    padding: 10px 25px;
-    width: 120px;
-    text-align: center;
-    border: 1px solid #E0E0E0;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    color: #4F4F4F;
-  }
-  input{
-  }
+}
+
+.label-post-album {
+  padding: 10px 25px;
+  width: 120px;
+  text-align: center;
+  border: 1px solid #E0E0E0;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #4F4F4F;
 }
 
 .user_info {
