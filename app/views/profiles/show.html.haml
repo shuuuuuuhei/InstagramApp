@@ -24,4 +24,4 @@
                     - if article.images.attached?
                         .card_image
                             - article.images.each do |image|
-                                = image_tag image
+                                = image_tag image, :size =>'220x280'
