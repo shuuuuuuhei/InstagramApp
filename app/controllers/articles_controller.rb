@@ -15,13 +15,18 @@ class ArticlesController < ApplicationController
     def create
         @article = current_user.articles.build(article_params)
         if @article.save
-            redirect_to article_path(@article), notice: '保存できたよ'
+            redirect_to root_path, notice: '保存できたよ'
             
         else
             flash.now[:error] = '保存に失敗しました'
         end
     end
-    
+
+    def destroy
+        article = current_user.articles.find(params[:id])
+        article.destroy!
+        redirect_to root_path, notice: '削除に成功しました'
+    end
 
     def edit
 

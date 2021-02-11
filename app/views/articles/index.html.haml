@@ -19,8 +19,11 @@
                 = image_tag 'heart.png'
             .card_add_comment
                 = image_tag 'comment.png'
-            .card_add_detail
+            .card_add_detail.dropdown
                 = image_tag 'detail.png'
+                .dropdown-content.mini
+                    = link_to '編集する' , edit_article_path(article)
+                    = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか'}
         .card_good
             %p.card_good_person いいね！：yoshinobu_ohga
         .card_content
