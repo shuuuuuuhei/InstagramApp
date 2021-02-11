@@ -24,6 +24,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :account, uniqueness: true
   
+  has_many :likes, dependent: :destroy
   has_many :articles, dependent: :destroy
   has_one :profile, dependent: :destroy
   
