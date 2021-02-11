@@ -23,5 +23,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :account, uniqueness: true
+  
+  has_many :articles, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  
+  def display_name
+    self.email.split('@').first
+  end
 
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
 end

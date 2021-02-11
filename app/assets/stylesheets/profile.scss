@@ -1,0 +1,61 @@
+@import './variables';
+
+$image_size: 150px;
+$image_radius_size: 75px;
+.profilePage {
+
+    text-align: center;
+    &_user {
+        margin-top: 40px;
+        &_name {
+            font-size: 32px;
+            color: $font-color;
+            font-family: $font-style;
+            font-weight: bold;
+            margin: 50px 0;
+        }
+        &_image {
+            img {
+                width: $image_size;
+                height: $image_size;
+                border-radius: $image_radius_size;
+            }
+        }
+
+        &_basicInfo {
+            margin: 80px auto;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: space-around;
+            h3 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 18px;
+                color: #9E9E9E;
+            }
+        }
+
+        &_articles {
+            
+        }
+
+        &_actionButton {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 12px;
+            border-radius: 4px;
+            border: 1px solid $primary-color;
+            font-weight: bold;
+            padding: 0px 8px;
+            a {
+            color: $primary-color;
+            }
+        }
+
+        &_introduction {
+            font-size: 12px;
+        }
+    }
+}

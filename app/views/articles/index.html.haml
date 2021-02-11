@@ -1,0 +1,32 @@
+= link_to new_article_path do
+    %i.fas.fa-camera.article-post.fa-5x
+= link_to 'プロフィール', profile_path
+- @articles.each do |article|
+    .card
+        = link_to profile_path do
+            .card_user
+                .card_user_image
+                    = image_tag article.user.avatar_image
+                .card_user_detail
+                    %h3.card_user_detail_name= article.user.display_name
+                    %p.card_user_detail_time 12 hours ago
+        - if article.images.attached?
+            - article.images.each do |image|
+                .card_image
+                    = image_tag image
+        .card_detail
+            .card_heart
+                = image_tag 'heart.png'
+            .card_add_comment
+                = image_tag 'comment.png'
+            .card_add_detail.dropdown
+                = image_tag 'detail.png'
+                .dropdown-content.mini
+                    = link_to '編集する' , edit_article_path(article)
+                    = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか'}
+        .card_good
+            %p.card_good_person いいね！：yoshinobu_ohga
+        .card_content
+            = link_to profile_path do
+                %h3.card_user_detail_name= article.user.display_name
+            %p.card_content_caption= article.caption

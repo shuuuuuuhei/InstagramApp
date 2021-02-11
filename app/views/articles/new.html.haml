@@ -1,0 +1,14 @@
+%ul
+    - @article.errors.full_messages.each do |message|
+        %li= message
+= form_with(model: @article, local: true) do |f|
+    .user_info
+        = image_tag @article.user.avatar_image, class: 'icon'
+        %h3.card_user_detail_name.user_info_name= @article.user.display_name
+        = f.submit 'POST' , class: 'post-btn'
+    %div
+        = f.text_area :caption, placeholder: "What's on your mind?"
+    %div.item-num-0#image-box__container
+        = f.file_field :images, direct_upload: true, multiple: true, id: 'img-file', style: "display:none"
+        %label{for: "img-file"}
+            %p.label-post-album + Album
