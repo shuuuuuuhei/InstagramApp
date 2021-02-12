@@ -2,7 +2,7 @@
     %i.fas.fa-camera.article-post.fa-5x
 = link_to 'プロフィール', profile_path
 - @articles.each do |article|
-    .card
+    .card#article-show{data: {article_id: article.id} }
         = link_to profile_path do
             .card_user
                 .card_user_image
@@ -15,14 +15,10 @@
                 .card_image
                     = image_tag image
         .card_detail
-            - if current_user.has_liked?(article)
-                .card_heart
-                    = link_to article_like_path(article), data: { method: 'delete'} do
-                        = image_tag 'heart.png'
-            - else
-                .card_heart
-                    = link_to article_like_path(article), data: { method: 'post'} do
-                        = image_tag 'heart.svg'
+            .card_heart.hidden.active-heart
+                = image_tag 'heart.png'
+            .card_heart.hidden.inactive-heart
+                = image_tag 'heart.svg'
             .card_add_comment
                 = image_tag 'comment.png'
             .card_add_detail.dropdown
