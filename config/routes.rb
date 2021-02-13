@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy, :show]
   end
   resource :profile, only: [:show, :edit, :update, :create]
+
+  resources :favorites, only: [:index]
 end

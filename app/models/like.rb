@@ -14,7 +14,11 @@
 #  index_likes_on_user_id     (user_id)
 #
 class Like < ApplicationRecord
-    belong_to :user
-    belong_to :article
+    belongs_to :user
+    belongs_to :article
+
+    def display_user_name(user_id)
+        put 'aaaa'
+    end
     
 end

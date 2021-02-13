@@ -27,7 +27,7 @@
                     = link_to '編集する' , edit_article_path(article)
                     = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか'}
         .card_good
-            %p.card_good_person いいね！：yoshinobu_ohga
+            %p.card_good_person いいね：
         .card_content
             = link_to profile_path do
                 %h3.card_user_detail_name= article.user.display_name
