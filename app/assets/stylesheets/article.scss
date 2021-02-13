@@ -4,9 +4,6 @@
 }
 
 .card {
-    &_user {
-
-    }
 }
 
 .dropbtn {
@@ -46,4 +43,10 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  .card_good {
+    display: flex;
+    height: 30px;
+    align-items: center;
   }

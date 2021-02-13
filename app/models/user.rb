@@ -24,11 +24,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :account, uniqueness: true
   
+  has_many :likes, dependent: :destroy
+  has_many :favorite_articles, through: :likes, source: :article
+
   has_many :articles, dependent: :destroy
   has_one :profile, dependent: :destroy
   
   def display_name
-    self.email.split('@').first
+    profile&.nickname || self.email.split('@').first
   end
 
   def avatar_image
@@ -38,4 +41,13 @@ class User < ApplicationRecord
       'default-avatar.png'
     end
   end
+
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
+  end
+
+  def has_profile?
+    profile.nil?
+  end
+  
 end
