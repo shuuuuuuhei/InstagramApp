@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   
   def display_name
-    self.email.split('@').first
+    profile&.nickname || self.email.split('@').first
   end
 
   def avatar_image
@@ -44,6 +44,10 @@ class User < ApplicationRecord
 
   def has_liked?(article)
     likes.exists?(article_id: article.id)
+  end
+
+  def has_profile?
+    profile.nil?
   end
   
 end

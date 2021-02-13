@@ -13,8 +13,8 @@ const handleHeartDisplay = (hasLiked) => {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    const dataset = $('#article-show').data()
-    const articleId = dataset.articleId
+    var dataset = $('#article-show').data()
+    var articleId = dataset.articleId
     axios.get(`/articles/${articleId}/like`)
         .then((response) => {
             const hasLiked = response.data.hasLiked

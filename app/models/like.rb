@@ -16,9 +16,5 @@
 class Like < ApplicationRecord
     belongs_to :user
     belongs_to :article
-
-    def display_user_name(user_id)
-        put 'aaaa'
-    end
     
 end
