@@ -1,0 +1,14 @@
+.comment
+    %h2.comment_top Comment
+    - @comments.each do |comment|
+        .comment_wrap
+            .comment_wrap_user
+                .comment_wrap_user_image.icon
+                    = image_tag comment.user.avatar_image
+                .comment_wrap_user_name
+                    %h3= comment.user.display_name
+            .comment_wrap_content
+                = comment.content
+    .comment_add
+        = link_to new_article_comment_path(@article), class: 'comment_add_btn' do
+            = image_tag 'comment.png'

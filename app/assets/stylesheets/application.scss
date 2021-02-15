@@ -10,6 +10,7 @@
 @import 'card';
 @import 'flash';
 @import 'header';
+@import 'comment';
 html {
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
@@ -18,6 +19,8 @@ html {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     height: 100%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 *,
@@ -28,13 +31,15 @@ html {
 }
   
 body {
-height: 100%;
-font-size: 1em;
+    height: 100%;
+    font-size: 1em;
+    background-color: #fff;
 }
 
 .container {
-padding: 16px 16px;
-width: 100%;
+    padding: 16px 16px;
+    width: 100%;
+    max-width: 100%;
 }
 
 

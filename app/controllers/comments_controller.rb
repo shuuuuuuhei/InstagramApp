@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
 
-    def show
-        
+    def index
+        @article = Article.find(params[:article_id])
+        @comments = @article.comments
     end
 
     def new
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
         article = Article.find(params[:article_id])
         @comment = article.comments.create!(comment_params)
         if @comment.save
-            redirect_to root_path, notice: 'コメントを追加しました'
+            redirect_to article_comments_path(article), notice: 'コメントを追加しました'
         else
             flash.now[:error] = '保存に失敗しました'
         end
