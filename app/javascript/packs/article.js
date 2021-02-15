@@ -13,17 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             $(`#${id}.inactive-heart`).removeClass('hidden')
         }
     }
-    const id = $('.article-show[id]')
-    axios.get(`/articles/${id}/like`)
-        .then((response) => {
-            const hasLiked = response.data.hasLiked
-            handleHeartDisplay(hasLiked)
-            console.log(response)
-        })
-        .catch((e) => {
-            window.alert('error')
-            console.log(e)
-        })
 
     $('.active-heart').on('click', function() {
         var articleId = $(this).attr("id")
