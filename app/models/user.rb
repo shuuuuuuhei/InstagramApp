@@ -23,12 +23,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :account, uniqueness: true
-  
-  has_many :likes, dependent: :destroy
-  has_many :favorite_articles, through: :likes, source: :article
 
   has_many :articles, dependent: :destroy
   has_one :profile, dependent: :destroy
+
+  has_many :likes, dependent: :destroy
+  has_many :favorite_articles, through: :likes, source: :article
+
+  has_many :comments, dependent: :destroy
   
   def display_name
     profile&.nickname || self.email.split('@').first
