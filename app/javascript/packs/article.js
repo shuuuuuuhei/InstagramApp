@@ -4,30 +4,14 @@ import { csrfToken } from 'rails-ujs'
 
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
-const handleHeartDisplay = (hasLiked) => {
-    if (hasLiked) {
-        $('.active-heart').removeClass('hidden')
-    }
-    else {
-        $('.inactive-heart').removeClass('hidden')
-    }
-}
 document.addEventListener('DOMContentLoaded', () => {
-    var dataset = $('#article-show').data()
-    var articleId = dataset.articleId
-    axios.get(`/articles/${articleId}/like`)
-        .then((response) => {
-            const hasLiked = response.data.hasLiked
-            handleHeartDisplay(hasLiked)
-            console.log(response)
-        })
-    
-    $('.active-heart').on('click', ()=> {
+    $('.active-heart').on('click', function() {
+        var articleId = $(this).attr("id")
         axios.delete(`/articles/${articleId}/like`)
             .then((response) => {
                 if(response.data.status === 'ok') {
-                    $('.inactive-heart').removeClass('hidden')
-                    $('.active-heart').addClass('hidden')
+                    $(`#${articleId}.inactive-heart`).removeClass('hidden')
+                    $(`#${articleId}.active-heart`).addClass('hidden')
                 }
             })
             .catch((e) => {
@@ -36,12 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
     })
 
-    $('.inactive-heart').on('click', ()=> {
+    $('.inactive-heart').on('click', function() {
+        var articleId = $(this).attr("id")
         axios.post(`/articles/${articleId}/like`)
         .then((response) => {
             if(response.data.status === 'ok') {
-                $('.active-heart').removeClass('hidden')
-                $('.inactive-heart').addClass('hidden')
+                $(`#${articleId}.active-heart`).removeClass('hidden')
+                $(`#${articleId}.inactive-heart`).addClass('hidden')
             }
         })
         .catch((e) => {
