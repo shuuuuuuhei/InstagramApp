@@ -1,0 +1,49 @@
+@import 'variables';
+.comment {
+    max-width: 100%;
+    height: 100%;
+    padding-bottom: 100px;
+    position: relative;
+    &_top {
+        text-align: center;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+    }
+    &_wrap {
+        margin: 20px 0;
+        &_user {
+            display: flex;
+            justify-content: flex-start;  /* 水平方向は左に寄せる */
+            align-items: center;
+            &_icon {
+
+            }
+            &_name {
+                margin-left: 10px;
+            }
+        }
+        &_content {
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+    }
+    &_add {
+        position: absolute;
+        bottom: 0;
+        img {
+            position: absolute;
+            bottom: 22px;
+            left: 20px;
+            cursor: pointer;
+        }
+        &_text {
+            width: 350px;
+            height: 50px;
+            max-width: 100%;
+            padding-left: 40px;
+            box-shadow: 6px 6px #E0E0E0;
+            vertical-align: middle;
+        }
+    }
+}

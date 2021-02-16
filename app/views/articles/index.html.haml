@@ -1,7 +1,7 @@
 = link_to new_article_path do
     %i.fas.fa-camera.article-post.fa-5x
 - @articles.each do |article|
-    .card#article-show{data: {article_id: article.id} }
+    .card{class: "article-show", id: article.id}
         = link_to profile_path do
             .card_user
                 .card_user_image
@@ -14,12 +14,19 @@
                 .card_image
                     = image_tag image
         .card_detail
-            .card_heart.hidden.active-heart
-                = image_tag 'heart.png'
-            .card_heart.hidden.inactive-heart
-                = image_tag 'heart.svg'
+            - if current_user.has_liked?(article)
+                .card_heart.active-heart{id: article.id }
+                    = image_tag 'heart.png'
+                .card_heart.inactive-heart.hidden{id: article.id }
+                    = image_tag 'heart.svg'
+            - else
+                .card_heart.active-heart.hidden{id: article.id }
+                    = image_tag 'heart.png'
+                .card_heart.inactive-heart{id: article.id }
+                    = image_tag 'heart.svg'
             .card_add_comment
-                = image_tag 'comment.png'
+                = link_to article_comments_path(article) do
+                    = image_tag 'comment.png'
             .card_add_detail.dropdown
                 = image_tag 'detail.png'
                 .dropdown-content.mini

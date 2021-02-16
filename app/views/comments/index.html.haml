@@ -1,0 +1,16 @@
+.comment
+    %h2.comment_top Comment
+    .comment-container
+        - @comments.each do |comment|
+            .comment_wrap{ id: "#{comment.id}"}
+                .comment_wrap_user
+                    .comment_wrap_user_image.icon
+                        = image_tag comment.user.avatar_image
+                    .comment_wrap_user_name
+                        %h3= comment.user.display_name
+                .comment_wrap_content
+                    = comment.content
+    .comment_add{ data: { user_id: current_user.id , user_name: current_user.display_name, user_avatar: current_user.avatar_image } }
+        = image_tag 'comment.png', class: 'comment_add_btn', id: "#{@article.id}"
+        = text_area_tag :comment_content, '', class: 'comment_add_text'
+= javascript_pack_tag 'article'
