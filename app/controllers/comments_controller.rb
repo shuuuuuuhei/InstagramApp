@@ -14,11 +14,9 @@ class CommentsController < ApplicationController
     def create
         article = Article.find(params[:article_id])
         @comment = article.comments.create!(comment_params)
-        if @comment.save
-            redirect_to article_comments_path(article), notice: 'コメントを追加しました'
-        else
-            flash.now[:error] = '保存に失敗しました'
-        end
+        @comment.save!
+
+        render json: @comment
     end
 
     def delete

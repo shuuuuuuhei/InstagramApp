@@ -5,6 +5,68 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    $('.comment_add_btn').on("click", function() {
+        var dataSet = $('.comment_add').data()
+        var userId = dataSet.userId
+        var userName = dataSet.userName
+        var userAvatar = dataSet.userAvatar
+        var articleId = $(this).attr("id")
+        const content = $('#comment_content').val()
+        if (!content) {
+            window.alert('コメントを入力してください')
+        }
+        else {
+            axios.post(`/articles/${articleId}/comments`, {
+                comment: { 
+                    content: content,
+                    user_id: userId,
+                    article_id: articleId
+                }
+            })
+                .then((res) => {
+                    const id = $('.comment_wrap').last().attr("id")
+                    const comment = res.data
+                    if(!id) {
+                        $('.comment-container').append(
+                            `<div class = "comment_wrap">
+                                <div class = "comment_wrap_user">
+                                    <div class = "comment_wrap_user_image.icon">
+                                        <img src="${userAvatar}">
+                                    </div>
+                                    <div class = "comment_wrap_user_name">
+                                        <h3>${userName}</h3>
+                                    </div>
+                                </div>
+                                <div class = "comment_wrap_content">
+                                    ${comment.content}
+                                </div>
+                            </div>
+                            `   
+                        )
+                    } else {
+                        $(`#${id}.comment_wrap`).append(
+                            `<div class = "comment_wrap">
+                                <div class = "comment_wrap_user">
+                                    <div class = "comment_wrap_user_image.icon">
+                                        <img src="${userAvatar}">
+                                    </div>
+                                    <div class = "comment_wrap_user_name">
+                                        <h3>${userName}</h3>
+                                    </div>
+                                </div>
+                                <div class = "comment_wrap_content">
+                                    ${comment.content}
+                                </div>
+                            </div>
+                            `
+                        )
+                    }
+                    $('#comment_content').val('')
+                })
+        }
+    })
+
     $('.active-heart').on('click', function() {
         var articleId = $(this).attr("id")
         axios.delete(`/articles/${articleId}/like`)
@@ -92,5 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var obj = document.getElementById('img-file')
         obj.value = ''
     })
+
+
 
 })
