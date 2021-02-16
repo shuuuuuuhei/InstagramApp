@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var dataBox = new DataTransfer();
     //file_fieldにデータが格納された時に発火
     $('#img-file').change(function (){
-
         //選択したfileのオブジェクトをpropで取得
         var files = $(this).prop('files')[0];
         $.each(this.files, function(i, file){
