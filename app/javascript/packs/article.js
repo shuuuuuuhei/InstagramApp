@@ -5,7 +5,6 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('DOMContentLoaded', () => {
-<<<<<<< HEAD
 
     $('.comment_add_btn').on("click", function() {
         var dataSet = $('.comment_add').data()
@@ -67,16 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
         }
     })
-=======
-    const handleHeartDisplay = (hasLiked) => {
-        if (hasLiked) {
-            $(`#${id}.active-heart`).removeClass('hidden')
-        }
-        else {
-            $(`#${id}.inactive-heart`).removeClass('hidden')
-        }
-    }
->>>>>>> like
 
     $('.active-heart').on('click', function() {
         var articleId = $(this).attr("id")
