@@ -28,6 +28,7 @@ gem 'binding_of_caller'
 gem 'faker'
 gem 'hamlit'
 gem 'devise'
+gem 'sidekiq'
 
 #Use Active Storage variant
 gem 'image_processing', '~> 1.2'
