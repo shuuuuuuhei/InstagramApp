@@ -1,0 +1,4 @@
+%p #{@received_user.email}さんへ
+%p= "#{@sent_user.display_name}さんからコメントが届きました。"
+
+= link_to 'コメントを確認する', article_comments_url(@article)
