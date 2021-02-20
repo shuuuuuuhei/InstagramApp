@@ -8,6 +8,11 @@
             %input(type="file" name = 'image' id='user_image_tag')
             .btn-secondary.add-user-image-btn
                 アバターを更新
+        .profilePage_user_action
+            - if user == @user
+                %p= link_to 'Follow', '#'
+            - else
+                %p= link_to 'Edit', '#'
         .profilePage_user_basicInfo
             = link_to '#', class: 'profilePage_user_basicInfo_posts' do
                 %h3 44
@@ -25,4 +30,3 @@
                         .card_image
                             - article.images.each do |image|
                                 = image_tag image, :size =>'220x280'
-    = link_to 'ログアウト', destroy_user_session_path(user)
