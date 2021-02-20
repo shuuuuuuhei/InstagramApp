@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :new, :destroy, :index]
   end
 
-  resources :accounts, only: [:show]
+  resources :accounts, only: [:show] do
+    resources :follows, only: [:create]
+  end
+
   resource :profile, only: [:show, :edit, :update, :create]
 
   resources :favorites, only: [:index]

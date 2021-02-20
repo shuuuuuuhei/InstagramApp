@@ -10,7 +10,10 @@
                 アバターを更新
         .profilePage_user_action
             - if user == @user
-                %p= link_to 'Follow', '#'
+                - if current_user&.has_followed?(@user)
+                    %p= link_to 'Followed'
+                - else
+                    %p= link_to 'Follow', account_follows_path(user), data: { method: 'post' }
             - else
                 %p= link_to 'Edit', '#'
         .profilePage_user_basicInfo
