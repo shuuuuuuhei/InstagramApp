@@ -11,7 +11,7 @@
         .profilePage_user_action
             - if user == @user
                 - if current_user&.has_followed?(@user)
-                    %p= link_to 'Followed'
+                    %p= link_to 'Followed', account_unfollows_path(user), data: { method: 'post'}
                 - else
                     %p= link_to 'Follow', account_follows_path(user), data: { method: 'post' }
             - else
