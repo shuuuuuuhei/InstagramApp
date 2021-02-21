@@ -5,7 +5,6 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('DOMContentLoaded', () => {
-
     $('.comment_add_btn').on("click", function() {
         var dataSet = $('.comment_add').data()
         var userId = dataSet.userId
