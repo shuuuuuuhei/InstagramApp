@@ -21,10 +21,10 @@
                 %h3 44
                 %p Posts
             = link_to '#', class: 'profilePage_user_basicInfo_followers' do
-                %h3 110
+                %h3= user.followers.count
                 %p Followers
             = link_to '#', class: 'profilePage_user_basicInfo_following' do
-                %h3 44
+                %h3= user.followings.count
                 %p Following
         .profilePage_user_articles
             - user.articles.each do |article|
