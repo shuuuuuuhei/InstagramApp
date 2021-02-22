@@ -1,0 +1,38 @@
+.profilePage
+    .profilePage_user
+        .profilePage_user_name
+            = user.display_name
+        .profilePage_user_image
+            = image_tag user.avatar_image
+        .profilePage_user_image_area.hidden
+            %input(type="file" name = 'image' id='user_image_tag')
+            .btn-secondary.add-user-image-btn
+                アバターを更新
+        .profilePage_user_action
+            - if user == @user
+                - if current_user&.has_followed?(@user)
+                    %p.unfollow-btn{ id: user.id } Followed
+                    %p.follow-btn.hidden{ id: user.id } Follow
+                - else
+                    %p.follow-btn{ id: user.id } Follow
+                    %p.unfollow-btn.hidden{ id: user.id } Followed
+            - else
+                %p= link_to 'Edit', '#'
+        .profilePage_user_basicInfo
+            = link_to '#', class: 'profilePage_user_basicInfo_posts' do
+                %h3 44
+                %p Posts
+            = link_to account_follower_path(user.id), class: 'profilePage_user_basicInfo_followers' do
+                %h3#profilePage_user_basicInfo_followers_num= user.followers.count
+                %p Followers
+            = link_to account_following_path(user.id), class: 'profilePage_user_basicInfo_following' do
+                %h3#profilePage_user_basicInfo_following_num= user.followings.count
+                %p Following
+        .profilePage_user_articles
+            - user.articles.each do |article|
+                .card
+                    - if article.images.attached?
+                        .card_image
+                            - article.images.each do |image|
+                                = image_tag image, :size =>'220x280'
+= javascript_pack_tag 'profile'

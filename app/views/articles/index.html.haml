@@ -2,7 +2,7 @@
     %i.fas.fa-camera.article-post.fa-5x
 - @articles.each_with_index do |article, index1|
     .card{class: "article-show", id: article.id}
-        = link_to profile_path do
+        = link_to account_path(article.user) do
             .card_user
                 .card_user_image
                     = image_tag article.user.avatar_image
