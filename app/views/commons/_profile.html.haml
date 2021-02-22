@@ -22,10 +22,10 @@
             = link_to '#', class: 'profilePage_user_basicInfo_posts' do
                 %h3 44
                 %p Posts
-            = link_to '#', class: 'profilePage_user_basicInfo_followers' do
+            = link_to account_follower_path(user.id), class: 'profilePage_user_basicInfo_followers' do
                 %h3#profilePage_user_basicInfo_followers_num= user.followers.count
                 %p Followers
-            = link_to '#', class: 'profilePage_user_basicInfo_following' do
+            = link_to account_following_path(user.id), class: 'profilePage_user_basicInfo_following' do
                 %h3#profilePage_user_basicInfo_following_num= user.followings.count
                 %p Following
         .profilePage_user_articles

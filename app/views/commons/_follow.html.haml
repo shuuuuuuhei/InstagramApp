@@ -1,0 +1,7 @@
+- users.each do |user|
+    = link_to account_path(user.id) do
+        .follow_wrap_user
+            .icon
+                = image_tag user.avatar_image
+            .follow_wrap_user_name
+                %p= user.display_name

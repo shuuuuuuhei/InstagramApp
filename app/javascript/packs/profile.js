@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 $('.unfollow-btn').addClass('hidden')
                 $('.follow-btn').removeClass('hidden')
                 var userFollowerCount = Number(document.getElementById('profilePage_user_basicInfo_followers_num').textContent);
-                var userFollowCount = Number(document.getElementById('profilePage_user_basicInfo_following_num').textContent);
                 $('#profilePage_user_basicInfo_followers_num').text(userFollowerCount-1)
             })
     })

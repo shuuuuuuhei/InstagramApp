@@ -1,0 +1,27 @@
+@import './variables';
+.follow {
+    &_top {
+        padding: 20px 0;
+        text-align: center;
+        h2 {
+            font-family: Poppins;
+            font-weight: 400;
+        }
+    }
+    &_wrap {
+        &_user {
+            padding-bottom: 16px;
+            border-bottom: 2px solid #EEEEEE;
+            display: flex;
+            justify-content: flex-start;  /* 水平方向は左に寄せる */
+            align-items: center;
+            margin: 20px 0;
+            &_name {
+                margin-left: 10px;
+                p {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
