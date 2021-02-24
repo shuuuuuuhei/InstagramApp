@@ -2,11 +2,12 @@
 #
 # Table name: articles
 #
-#  id         :bigint           not null, primary key
-#  caption    :text             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id          :bigint           not null, primary key
+#  caption     :text             not null
+#  likes_count :integer          default(0), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
 #
 # Indexes
 #

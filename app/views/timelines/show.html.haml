@@ -1,0 +1,55 @@
+- @articles.each_with_index do |article, index1|
+    .card{class: "article-show", id: article.id}
+        = link_to account_path(article.user_id) do
+            .card_user
+                .card_user_image
+                    = image_tag article.avatar_image
+                .card_user_detail
+                    %h3.card_user_detail_name= User.find(article.user_id).display_name
+                    %p.card_user_detail_time.time="#{time_ago_in_words(article.created_at)} ago"
+        - if Article.find(article.id).images.attached?
+            .timeline_post_images
+                .timeline_post_container
+                    .slideshow
+                        %div{:class => "grid slideshow_slides_#{index1+1}"}
+                            - Article.find(article.id).images.each_with_index do |photo, index2|
+                                = link_to article_path(article.id), {:class => "slide grid_item_#{index2+1}"} do
+                                    = image_tag photo
+                        %div{:class => "slideshow_indicator slideshow_indicator_#{index1+1}"}
+        .card_detail
+            - if current_user.has_liked?(article)
+                .card_heart.active-heart{id: article.id }
+                    = image_tag 'heart.png'
+                .card_heart.inactive-heart.hidden{id: article.id }
+                    = image_tag 'heart.svg'
+            - else
+                .card_heart.active-heart.hidden{id: article.id }
+                    = image_tag 'heart.png'
+                .card_heart.inactive-heart{id: article.id }
+                    = image_tag 'heart.svg'
+            .card_add_comment
+                = link_to article_comments_path(article) do
+                    = image_tag 'comment.png'
+            .card_add_detail.dropdown
+                = link_to "https://twitter.com/share?url=#{request.url}" do
+                    = image_tag 'detail.png'
+                .dropdown-content.mini
+                    -# = link_to '編集する' , edit_article_path(article)
+                    -# = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか'}
+        .card_good
+            %p.card_good_person いいね！：
+            - if article.likes.count >= 2
+                - if article.likes.first.user.has_profile?
+                    = article.likes.first.user.display_name
+                - else
+                    = link_to "#{article.likes.first.user.display_name}", profile_path(article.likes.first.user.profile)
+                他
+            - else
+                - article.likes.each do |like|
+                    = like.user.display_name
+        .card_content
+            = link_to profile_path do
+                %h3.card_user_detail_name= User.find(article.user_id).display_name
+            %p.card_content_caption= article.caption
+
+= javascript_pack_tag 'article'

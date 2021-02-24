@@ -29,6 +29,7 @@ gem 'faker'
 gem 'hamlit'
 gem 'devise'
 gem 'sidekiq'
+gem 'counter_culture'
 
 #Use Active Storage variant
 gem 'image_processing', '~> 1.2'
@@ -41,6 +42,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'rubocop-rails'
+  gem 'hirb'
 end
 
 group :development do
