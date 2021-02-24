@@ -1,18 +1,18 @@
-- @articles.each_with_index do |article, index1|
+- articles.each_with_index do |article, index1|
     .card{class: "article-show", id: article.id}
-        = link_to account_path(article.user_id) do
+        = link_to account_path(article.user) do
             .card_user
                 .card_user_image
-                    = image_tag article.avatar_image
+                    = image_tag article.user.avatar_image
                 .card_user_detail
-                    %h3.card_user_detail_name= User.find(article.user_id).display_name
+                    %h3.card_user_detail_name= article.user.display_name
                     %p.card_user_detail_time.time="#{time_ago_in_words(article.created_at)} ago"
-        - if Article.find(article.id).images.attached?
+        - if article.images.attached?
             .timeline_post_images
                 .timeline_post_container
                     .slideshow
                         %div{:class => "grid slideshow_slides_#{index1+1}"}
-                            - Article.find(article.id).images.each_with_index do |photo, index2|
+                            - article.images.each_with_index do |photo, index2|
                                 = link_to article_path(article.id), {:class => "slide grid_item_#{index2+1}"} do
                                     = image_tag photo
                         %div{:class => "slideshow_indicator slideshow_indicator_#{index1+1}"}
@@ -49,7 +49,7 @@
                     = like.user.display_name
         .card_content
             = link_to profile_path do
-                %h3.card_user_detail_name= User.find(article.user_id).display_name
+                %h3.card_user_detail_name= article.user.display_name
             %p.card_content_caption= article.caption
 
 = javascript_pack_tag 'article'
